@@ -1,1 +1,1 @@
-run="pyhon.py"
+print("")
