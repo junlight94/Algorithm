@@ -32,5 +32,5 @@
 ### Shortest Path(최단경로)
 
 
-### (Graph)그래프 이론
+### Graph(그래프 이론)
 
