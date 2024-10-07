@@ -85,4 +85,61 @@
 
 <br>
 
+# 프로그래머스 의상 문제
+[코드](https://github.com/junlight94/Algorithm/blob/main/resoucre/Hash/Junyoung/clothes.swift)
+
 <br>
+
+### 문제
+![스크린샷 2024-10-07 오후 8 11 41](https://github.com/user-attachments/assets/ed939faf-f4ed-40e1-a064-54301bbb72a1)
+
+
+### 풀이
+의상의 카테고리와 해당 카테고리에 포함된 의상이 몇개 인지 for문을 돌려서 dictonary에 추가합니다.
+
+의상의 종류는 Key값으로 그리고 수량은 key가 중복되면 value를 1 증가시킵니다.
+
+```swift
+var categoryCount: [String: Int] = [:]
+    
+    clothes.forEach { cloth in
+        let category = cloth[1]
+        categoryCount[category, default: 0] += 1
+    }
+```
+
+<br>
+
+계산하는 방법은 의상의 카테고리 종류를 곱하여서 총 입을 수 있는 경우의 수를 구하는데 여기서 몇가지 조건을 추가합니다.
+
+1. 해당 의상을 안 입을 경우를 생각해서 각 카테고리에 안 입는 경우를 추가합니다. (x+1) * (y+1)
+2. 그리고 아무것도 안 입는 경우는 없다는 조건이 있기 때문에 전체 계산된 식에서 1을 빼줍니다. (x+1) * (y+1) - 1
+
+```swift
+var combinations = 1
+
+for count in categoryCount.values {
+    combinations *= (count + 1)
+}
+    
+return combinations - 1
+```
+
+### 논의점
+프로그래머스 제일 따봉이 많은 풀이 방법입니다.
+
+이건 시간 복잡도가 O(N^2)일까요?? 해시 문제인데 해시로 접근한 것 같지 않은 풀이 방법입니다.
+
+```swift
+func solution(_ clothes:[[String]]) -> Int {
+    let types = clothes.compactMap({ $0.last })
+    let typeSet = Set(types)
+    let categories = Array(typeSet)
+
+    let counts = categories.map({ category in
+        return clothes.filter({ $0.last == category }).count + 1
+    })
+
+    return counts.reduce(1,  { $0 * $1 }) - 1
+}
+```
