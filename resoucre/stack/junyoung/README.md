@@ -18,4 +18,25 @@ for char in result {
 
 만약 `)`가 나왔을때 스택이 비어있다면 Early return 으로 "NO"를 리턴합니다.
 
+<br>
+
+```swift
+var count = 0
+    
+    for char in result {
+        if char == "(" {
+            count += 1
+        } else { 
+            guard count > 0 else { return false }
+            count -= 1
+        }
+    }
+```
+
+`removeLast`, `append` 시간 복잡도가 O(N)이여서 count를 활용한다면 더욱 빠르다.
+
 ![스크린샷 2024-10-10 오후 11 53 04](https://github.com/user-attachments/assets/d3a7e5d2-7390-4221-9c8e-b8a54b594edf)
+
+<br>
+
+
