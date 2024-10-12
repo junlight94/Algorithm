@@ -2,6 +2,22 @@
 [백준 실버4, 괄호](https://github.com/junlight94/Algorithm/blob/main/resoucre/stack/junyoung/Parentheses.swift)
 ![스크린샷 2024-10-10 오후 11 53 04](https://github.com/user-attachments/assets/d3a7e5d2-7390-4221-9c8e-b8a54b594edf)
 
+### 문제
+![스크린샷 2024-10-12 오후 7 16 45](https://github.com/user-attachments/assets/1767a1af-b0b1-4709-ab16-09ddc6ffaebe)
+
+### 예제
+![스크린샷 2024-10-12 오후 7 16 59](https://github.com/user-attachments/assets/a59ce638-cfc1-484f-8d7d-2f9c591f5944)
+
+### 문제 풀이
+1. 전체 괄호 String을 반복문을 돌립니다.
+2. "(" 여는 괄호를 만나면 스택에 넣습니다.
+3. ")" 닫는 괄호를 만나면 스택에 최상단을 pop해서 괄호를 만들어서 버립니다.
+4. ")" 닫는 괄호를 만났는데 스택이 비어있으면 early return 으로 "NO"를 찍고 종료합니다.
+5. 모든 for문이 돌고나서 스택이 비어있으면 "YES" 아니면 "NO"를 출력합니다.
+
+<br>
+
+### 코드
 ```swift
 for char in result {
         if char == "(" {
@@ -91,3 +107,33 @@ func solution(_ s:String) -> Bool
 ## 스택 수열
 [백준 실버2, 스택 수열]()
 ![스크린샷 2024-10-10 오후 11 53 04](https://github.com/user-attachments/assets/f7165249-35f7-4509-a876-438fba307814)
+
+### 문제
+![스크린샷 2024-10-12 오후 7 17 35](https://github.com/user-attachments/assets/2c6c5f49-b95e-45fc-87dd-f46575794767)
+
+### 예제
+![스크린샷 2024-10-12 오후 7 15 17](https://github.com/user-attachments/assets/2c7a7d35-cbbc-4f95-9593-2a83f67443d3)
+
+
+### 문제 풀이
+1. 첫번째 입력에서 들어온 정수의 수만큼 수열을 만듭니다 ex) 8 = `[1, 2, 3, 4, 5, 6, 7, 8]`
+2. 이어서 입력으로 들어온 정수들을 또 다른 배열에 넣습니다. `[4, 3, 6, 8, 7, 5, 2, 1]`
+3. 빈 스택을 생성합니다. 결과값 연산자를 넣는 빈 배열을 생성합니다.
+4. 2번의 배열 인덱스를 추적하기 위한 cursor 변수를 만들고 0으로 초기화 합니다.
+5. 1번 배열을 순회하면서 스택에 값을 push하고 결과값을 저장하는 배열에 "+"를 넣습니다.
+6. 값을 push한 후에 while문으로 스택의 최상단이 2번 배열 `[cursor]`와 같으면 pop을하고 cursor위치를 증가시킵니다. 아니면 종료합니다.
+7. 스택이 비어있다면 결과 배열을 출력하고 비어있지 않다면 "NO"를 출력합니다.
+
+### 코드
+``` swift
+for i in 1...inputCount {
+        stack.append(i)
+        resultStack.append("+")
+
+        while !stack.isEmpty && numbers[cursor] == stack.last {
+            cursor += 1
+            stack.removeLast()
+            resultStack.append("-")
+        }
+}
+```
