@@ -105,7 +105,7 @@ func solution(_ s:String) -> Bool
 <br>
 
 ## 스택 수열
-[백준 실버2, 스택 수열]()
+[백준 실버2, 스택 수열](https://github.com/junlight94/Algorithm/blob/main/resoucre/stack/junyoung/Sequence.swift)
 ![스크린샷 2024-10-10 오후 11 53 04](https://github.com/user-attachments/assets/f7165249-35f7-4509-a876-438fba307814)
 
 ### 문제
@@ -137,3 +137,57 @@ for i in 1...inputCount {
         }
 }
 ```
+
+<br>
+
+## 문자열 폭발
+[백준 골드4, 문자열 폭발](https://github.com/junlight94/Algorithm/blob/main/resoucre/stack/junyoung/StringExplosion.swift)
+![스크린샷 2024-10-13 오전 1 25 54](https://github.com/user-attachments/assets/3f5297bd-7ed9-40ab-916f-8a66b52ad5af)
+
+### 문제
+![스크린샷 2024-10-13 오전 1 33 22](https://github.com/user-attachments/assets/37d5778d-c9c9-49d6-b912-d8cac0245a9b)
+
+### 예제
+![스크린샷 2024-10-13 오전 1 33 34](https://github.com/user-attachments/assets/843ee5d6-72aa-43fe-88c7-2afb6317af33)
+
+### 문제 풀이
+1. 처음에 들어온 일반 문자열의 길이 만큼의 배열 생성 O(N)
+2. 문자열의 길이 만큼 반목문 실행 0(N)
+3. 스택의 길이와 폭발 문자열 길이가 같거나 크면서 폭발 문자열 길이 만큼 스택의 마지막 부분을 슬라이싱한 값과 폭발 문자열과 일치하면 폭발 문자열의 길이만큼 stack에서 pop
+4. 스택이 비었다면 "FRULA"출력 아니라면 스택 출력
+
+### 코드
+```swift
+func solution(first: String, second: String) -> String {
+
+    // 문자열 첫번째 입련된 최악의 수 만큼의 고정 배열 생성
+    var stack = Array<Character>(repeating: " ", count: first.count)
+    
+    // push, pop을 했을 경우의 인덱스를 조정하는 변수
+    var index = 0
+    
+    let bombLength = second.count
+    let bombArray = Array(second)
+    
+    for char in first {
+        stack[index] = char
+        index += 1
+
+        // stack의 길이가 폭발 문자열 보다 큰 경우 && 스택의 최상단 부터 폭발 문자열 길이만큼 잘라서 폭발 문자열과 같은지 비교
+        if index >= bombLength && stack[index-bombLength..<index].map({$0}) == bombArray {
+            // pop과 똑같은 동작 폭발 문자열의 길이 만큼 인덱스 조정(pop)
+            // 폭발 문자열 길이 만큼의 pop은 폭발 문자열의 길이에 복잡도 O(N) 이지만, index 위치를 줄이는 것은 O(1) 복잡도
+            index -= bombLength
+        }
+    }
+    
+    let result = String(stack[0..<index])
+    
+    return result.isEmpty ? "FRULA" : result
+}
+```
+
+<br>
+
+## 후위 표기식
+[백준 골드2, 후위 표기식]()
