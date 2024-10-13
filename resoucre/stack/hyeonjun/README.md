@@ -46,3 +46,5 @@ for _ in 0..<n {
 result.forEach { print($0) }
 
 ```
+
+#### 시간복잡도: O(N)
