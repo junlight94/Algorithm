@@ -15,6 +15,8 @@
 4. ")" 닫는 괄호를 만났는데 스택이 비어있으면 early return 으로 "NO"를 찍고 종료합니다.
 5. 모든 for문이 돌고나서 스택이 비어있으면 "YES" 아니면 "NO"를 출력합니다.
 
+![괄호 drawio](https://github.com/user-attachments/assets/610a4b0d-488e-4183-a012-ffe38e43b1aa)
+
 <br>
 
 ### 코드
