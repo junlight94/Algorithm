@@ -1,11 +1,11 @@
-### 기능개발
+## 기능개발
 문제: https://school.programmers.co.kr/learn/courses/30/lessons/42586
 
-## Flow, 문제 이해 
+### Flow, 문제 이해 
 
 ![IMG_F826F9EC2DCF-1](https://github.com/user-attachments/assets/77e79dc8-4f74-4127-9a34-0269bfda6b50)
 
-## Code
+### Code
 ```swift
 import Foundation
 
@@ -39,17 +39,17 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
 }
 ```
 
-## 시간복잡도: O(2N)
+### 시간복잡도: O(2N)
 
 
-### 프로세스
+## 프로세스
 문제: [https://school.programmers.co.kr/learn/courses/30/lessons/42586](https://school.programmers.co.kr/learn/courses/30/lessons/42587)
 
-## Flow, 문제 이해 
+### Flow, 문제 이해 
 ![IMG_2F3F5556AD04-1](https://github.com/user-attachments/assets/6ecc975e-cc7d-4e18-bb49-8aa58b76b318)
 
 
-## Code
+### Code
 ```swift
 import Foundation
 
@@ -75,9 +75,10 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
 }
 ```
 
-## 시간복잡도: O(N^2) 
- >> O(n) + O(n-1) + O(n-2) + O(n-3)... O(1)
-> > 등차수열 n(n+1) / 2
-> > n^2 + n / 2
-> > 최고차항: n^2
+### 시간복잡도: O(N^2) 
+
+> O(n) + O(n-1) + O(n-2) + O(n-3)... O(1)<br>
+> 등차수열 n(n+1) / 2<br>
+> n^2 + n / 2<br>
+> 최고차항: n^2<br>
 
