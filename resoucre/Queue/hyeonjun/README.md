@@ -40,7 +40,7 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
 ```
 
 ### 시간복잡도: O(2N)
-
+<br><br><br>
 
 ## 프로세스
 문제: [https://school.programmers.co.kr/learn/courses/30/lessons/42586](https://school.programmers.co.kr/learn/courses/30/lessons/42587)
