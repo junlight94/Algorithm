@@ -40,3 +40,44 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
 ```
 
 ## 시간복잡도: O(2N)
+
+
+### 프로세스
+문제: [https://school.programmers.co.kr/learn/courses/30/lessons/42586](https://school.programmers.co.kr/learn/courses/30/lessons/42587)
+
+## Flow, 문제 이해 
+![IMG_2F3F5556AD04-1](https://github.com/user-attachments/assets/6ecc975e-cc7d-4e18-bb49-8aa58b76b318)
+
+
+## Code
+```swift
+import Foundation
+
+func solution(_ priorities:[Int], _ location:Int) -> Int {
+    
+    var queue: [(index: Int, priority: Int)] = priorities.enumerated().map { (index: $0.offset, priority: $0.element)}
+    
+    var res: Int = 0
+    
+    while true {
+        
+        let item = queue.remove(at: 0)
+
+        if queue.contains { $0.priority > item.priority } {
+            queue.append(item)
+        } else {
+            res += 1
+            if item.index == location { return res }
+        }
+    }
+    
+    return res
+}
+```
+
+## 시간복잡도: O(N^2) 
+ >> O(n) + O(n-1) + O(n-2) + O(n-3)... O(1)
+> > 등차수열 n(n+1) / 2
+> > n^2 + n / 2
+> > 최고차항: n^2
+
