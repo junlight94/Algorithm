@@ -93,4 +93,4 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
         index == location
     }! + 1
 }
-```swift
+```
