@@ -70,3 +70,27 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
 ```
 
 ### 프로세스
+```swift
+func solution(_ priorities:[Int], _ location:Int) -> Int {
+    var priorities = priorities.enumerated().map { index, priority in
+        (index: index, priority: priority)
+    }
+    
+    var complete: [(Int, Int)] = []
+
+    while let firstPriorities = priorities.first {
+        let high = priorities.max { $0.priority < $1.priority }
+        if firstPriorities.priority == high!.priority {
+            complete.append(priorities.removeFirst())
+        } else {
+            priorities.append(priorities.removeFirst())
+        }
+    }
+
+    print(priorities)
+    print(complete)
+    return complete.firstIndex { index, priority in
+        index == location
+    }! + 1
+}
+```swift
