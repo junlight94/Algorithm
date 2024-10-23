@@ -82,3 +82,47 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
 > n^2 + n / 2<br>
 > 최고차항: n^2<br>
 
+
+<br><br><br>
+## 다리를 지나는 트럭
+
+### Flow, 문제 이해
+![IMG_57B1554EC8D6-1](https://github.com/user-attachments/assets/31170fb7-4b04-49e1-a588-3c59c7131905)
+
+### Code
+```swift
+import Foundation
+
+func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+    
+    var trucks = Array(truck_weights.reversed())
+    var bridge = [Int](repeating: 0, count: bridge_length)
+    var bridgeWeight = 0
+    var time = 0
+    
+    while !trucks.isEmpty || bridgeWeight > 0 {
+        
+        // 한 칸씩 전진 시키고 시간 증가
+        let pop = bridge.removeFirst()
+        bridgeWeight -= pop
+        time += 1
+        
+        // 남아 있는 트럭이 있는 경우
+        if !trucks.isEmpty {
+         // 트럭을 올릴 수 있는지 검사
+            if (bridgeWeight + trucks.last!) <= weight && (bridge.count + 1) <= bridge_length {
+                let truck = trucks.removeLast()
+                bridge.append(truck)
+                bridgeWeight += truck
+            } else {
+                // 없으면 전진만
+                bridge.append(0)
+            }
+        }
+    }
+    
+    return time
+}
+```
+
+### 시간복잡도: O(N^2) 프로세스 문제와 동일
