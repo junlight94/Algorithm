@@ -5,7 +5,7 @@
 <center><img width="239" alt="스크린샷 2024-10-21 오후 3 40 49" src="https://github.com/user-attachments/assets/f495e772-2c50-4b45-85c3-a717b42db540"></center>
 
 
-### 
+### 다리를 지나는 트럭
 ```swift
 func solution(_ bridge_length: Int, _ weight: Int, _ truck_weights: [Int]) -> Int {
     var time = 0 // 경과 시간
@@ -39,3 +39,8 @@ func solution(_ bridge_length: Int, _ weight: Int, _ truck_weights: [Int]) -> In
     return time
 }
 ```
+
+### 기능개발
+
+
+### 프로세스
