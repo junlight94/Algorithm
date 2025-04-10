@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  정수를_나선형으로_배치하기.swift
 //  Programmers
 //
 //  Created by Junyoung Lee on 4/10/25.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-print(mainSolution(5))
+//print(solution(5))
 
-func mainSolution(_ n:Int) -> [[Int]] {
+func solution(_ n:Int) -> [[Int]] {
     var result = Array(repeating: Array(repeating: 0, count: n), count: n)
     
     // 방향: 오른쪽, 아래, 왼쪽, 위
