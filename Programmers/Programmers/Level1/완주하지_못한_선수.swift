@@ -37,9 +37,9 @@ func solution_participant(_ participant: [String], _ completion: [String]) -> St
     
     // 완주한 선수 등록 + 1
     completion.forEach { completion in
-        result[completion, default: 0] += 1
+        result[completion, default: 0] -= 1
     }
     
     // 완주한 선수: 2, 완주하지 못한 선수: 1 필터링
-    return result.first(where: { $0.value == 1 } )!.key
+    return result.first(where: { $0.value >= 1 } )!.key
 }
