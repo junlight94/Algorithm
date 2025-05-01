@@ -1,14 +1,13 @@
 //
-//  main.swift
+//  네트워크(DFS, BFS).swift
 //  Programmers
 //
-//  Created by Junyoung Lee on 4/10/25.
+//  Created by Junyoung on 5/1/25.
 //
 
 import Foundation
 
-print(mainSolution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
-func mainSolution(_ n:Int, _ computers:[[Int]]) -> Int  {
+func solution_network(_ n:Int, _ computers:[[Int]]) -> Int  {
     // 각 컴퓨터가 방문되었는지 여부를 저장하는 배열
     var visited = [Bool](repeating: false, count: n)
     
