@@ -29,7 +29,7 @@ import Foundation
 func solution_network_dfs_recrusive(_ n:Int, _ computers:[[Int]]) -> Int  {
     // 각 컴퓨터가 방문되었는지 여부를 저장하는 배열
     var visited = [Bool](repeating: false, count: n)
-    
+    var visitedArr = [Int]()
     // 네트워크(연결된 덩어리)의 개수를 셈
     var networkCount = 0
     
@@ -37,21 +37,24 @@ func solution_network_dfs_recrusive(_ n:Int, _ computers:[[Int]]) -> Int  {
     func dfs(_ node: Int) {
         // 현재 노드를 방문했다고 표시
         visited[node] = true
-        print("✅ 방문 시작: \(node)번 컴퓨터")
+        visitedArr.append(node)
+        print("✅ 방문 노드: \(visitedArr.map{ $0 + 1 })")
+        print("✅ 방문 시작: \(node + 1)번 컴퓨터")
         
         // 0부터 n-1까지 모든 컴퓨터에 대해
         for i in 0..<n {
             // 만약 node와 i가 연결되어 있고, i가 아직 방문되지 않았다면
             if computers[node][i] == 1 && !visited[i] {
-                print("🔗 \(node)번 컴퓨터 → \(i)번 컴퓨터 연결됨 (아직 방문 안 함)")
+                print("🔗 \(node + 1)번 컴퓨터 → \(i + 1)번 컴퓨터 연결됨 (아직 방문 안 함)")
+                print("🔗 \(i + 1)번 컴퓨터 재귀 탐색 시작")
                 dfs(i) // 연결된 컴퓨터로 재귀 탐색
             } else if computers[node][i] == 1 && visited[i] {
-                print("🔁 \(node)번 컴퓨터 → \(i)번 컴퓨터 연결됨 (이미 방문함)")
+                print("🔁 \(node + 1)번 컴퓨터 → \(i + 1)번 컴퓨터 연결됨 (이미 방문함)")
             } else {
-                print("❌ \(node)번 컴퓨터 → \(i)번 컴퓨터 연결되지 않음")
+                print("❌ \(node + 1)번 컴퓨터 → \(i + 1)번 컴퓨터 연결되지 않음")
             }
         }
-        print("⬅️ \(node)번 컴퓨터 DFS 종료")
+        print("⬅️ \(node + 1)번 컴퓨터 DFS 종료")
     }
     
     // 모든 컴퓨터에 대해 방문하지 않은 컴퓨터가 있으면 DFS 실행
@@ -69,37 +72,40 @@ func solution_network_dfs_recrusive(_ n:Int, _ computers:[[Int]]) -> Int  {
     return networkCount
 }
 
-
-func solution_network_dfs_stack(_ n:Int, _ computers:[[Int]]) -> Int  {
+func solution_network_bfs_queue(_ n:Int, _ computers:[[Int]]) -> Int  {
     var visited = [Bool](repeating: false, count: n)
     var networkCount = 0
-
+    var visitedArr = [Int]()
+    
     for i in 0..<n {
         if !visited[i] {
-            var stack = [i]  // 스택 초기화
-            print("==== \(i)번 컴퓨터에서 DFS 시작 ====")
-            print("초기화 스택 : \(stack)")
+            var queue = [i]  // 큐 초기화
+            print("==== \(i + 1)번 컴퓨터에서 BFS 시작 ====")
             
-            while !stack.isEmpty {
-                let node = stack.removeLast()
-                
+            while !queue.isEmpty {
+                let node = queue.removeFirst()
+                print("✅ 방문 시작: \(node + 1)번 컴퓨터")
+
                 if visited[node] {
-                    print("🔁 \(node)번 컴퓨터 이미 방문함 → 스킵")
+                    print("🔁 \(node + 1)번 컴퓨터 이미 방문함 → 스킵")
                     continue
                 }
                 
                 visited[node] = true
-                print("✅ \(node)번 컴퓨터 방문")
+                print("✅ \(node + 1)번 컴퓨터 방문")
+                
+                visitedArr.append(node)
+                print("✅ 방문 노드: \(visitedArr.map{ $0 + 1 })")
                 
                 for j in 0..<n {
                     if computers[node][j] == 1 && !visited[j] {
-                        print("🔗 \(node) → \(j) 연결됨 (스택에 추가)")
-                        stack.append(j)
-                        print("스택 : \(stack)")
+                        print("🔗 \(node + 1) → \(j + 1) 연결됨 (큐에 추가)")
+                        queue.append(j)
+                        print("🔗 큐: \(queue.map { $0 + 1})")
                     } else if computers[node][j] == 1 && visited[j] {
-                        print("🔁 \(node) → \(j) 연결됨 (이미 방문)")
+                        print("🔁 \(node + 1) → \(j + 1) 연결됨 (이미 방문)")
                     } else {
-                        print("❌ \(node) → \(j) 연결되지 않음")
+                        print("❌ \(node + 1) → \(j + 1) 연결되지 않음")
                     }
                 }
             }
@@ -110,8 +116,4 @@ func solution_network_dfs_stack(_ n:Int, _ computers:[[Int]]) -> Int  {
     }
     
     return networkCount
-}
-
-func solution_network_bfs_queue(_ n:Int, _ computers:[[Int]]) -> Int  {
-    return 0
 }
