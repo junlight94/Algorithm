@@ -8,8 +8,5 @@
 import Foundation
 
 print(
-    solution_target(
-        [1, 1, 1, 1, 1],
-        3
-    )
+    solution_friend(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"])
 )
